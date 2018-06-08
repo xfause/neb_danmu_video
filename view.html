@@ -99,18 +99,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       position: relative;
       top: 1px;
     }
+
     a:link {
-            text-decoration: none;
-        }
+      text-decoration: none;
+    }
 
-        a:visited {
-            text-decoration: none;
-        }
+    a:visited {
+      text-decoration: none;
+    }
 
-        a:hover {
-            text-decoration: underline;
-            text-decoration: none;
-        }
+    a:hover {
+      text-decoration: underline;
+      text-decoration: none;
+    }
   </style>
 </head>
 
@@ -147,51 +148,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     <div class="clearfix"></div>
   </div>
-  <br>
-  <div class="video-x">
-    <canvas id="canvasBarrage" class="canvas-barrage" width="860" height="575"></canvas>
-    <video id="videoBarrage" width="860" height="575" controls>
-      <source id="videoSrc" src="" type="video/mp4">
-    </video>
-    <br>
-    <br>
-    <form id="barrageForm" method="post" autocomplete="off">
-      <span></span>
-        <a href="javascript:void(0)" class="myButton" onclick="loadDanmu()" style="display:block;float: right;margin-top: 0px">请先点击 [加载弹幕] ，等待几秒钟后再播放视频。</a>
-      
-      透明度(0-100)：&nbsp;&nbsp;&nbsp;&nbsp;
-      <div class="range ui-range" style="width: 129px;">
-        <div class="ui-range-track" style="border-left-width: 129px;">
-          <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="100" aria-valuemax="100" aria-valuemin="0" role="slider"></a> -->
-        </div>
+  <div class="content_middle">
+    <div class="content_middle_box">
+      <div class="video-x">
+        <canvas id="canvasBarrage" class="canvas-barrage" width="860" height="575"></canvas>
+        <video id="videoBarrage" width="860" height="575" controls>
+          <source id="videoSrc" src="" type="video/mp4">
+        </video>
+        <br>
+        <br>
+        <form id="barrageForm" method="post" autocomplete="off">
+          <span></span>
+          <a href="javascript:void(0)" class="myButton" onclick="loadDanmu()" style="display:block;float: right;margin-top: 0px">请先点击 [加载弹幕] ，等待几秒钟后再播放视频。</a>
+
+          透明度(0-100)：&nbsp;&nbsp;&nbsp;&nbsp;
+          <div class="range ui-range" style="width: 129px;">
+            <div class="ui-range-track" style="border-left-width: 129px;">
+              <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="100" aria-valuemax="100" aria-valuemin="0" role="slider"></a> -->
+            </div>
+          </div>
+          <input type="range" class="range" name="opacity" value="100" min="0" max="100" style="width: 129px;"> 文字大小(16-32)：&nbsp;&nbsp;
+          <div class="range ui-range" style="width: 129px;">
+            <div class="ui-range-track" style="border-left-width: 64.5px;">
+              <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="24" aria-valuemax="32" aria-valuemin="16" role="slider"></a> -->
+            </div>
+          </div>
+          <input type="range" class="range" name="fontSize" value="24" min="16" max="32" style="width: 129px;">
+          <p>弹幕位置：
+            <input type="radio" id="rangeFull" name="range" checked="" value="0,1">
+            <label class="ui-radio" for="rangeFull"></label>
+            <label for="rangeFull">全部位置</label>
+            <input type="radio" id="rangeTop" name="range" value="0,0.3">
+            <label class="ui-radio" for="rangeTop"></label>
+            <label for="rangeTop">顶部</label>
+            <input type="radio" id="rangeBottom" name="range" value="0.7,1">
+            <label class="ui-radio" for="rangeBottom"></label>
+            <label for="rangeBottom">底部</label>
+          </p>
+          <p class="last">
+            <input class="ui-input" id="input" name="value" required="" style="width: 500;height: 42px;">
+            <input type="submit" class="ui-button ui-button-primary" value="发送弹幕" disabled="" onclick="addDanmu()"> 颜色：
+            <label for="color" class="ui-color-track">
+              <span class="ui-color-thumb" style="background-color: rgb(255, 0, 0);"></span>
+            </label>
+            <input type="color" id="color" name="color" value="#ff0000" readonly="" data-target="id_010343685829235616" aria-expanded="false">
+          </p>
+        </form>
       </div>
-      <input type="range" class="range" name="opacity" value="100" min="0" max="100" style="width: 129px;"> 文字大小(16-32)：&nbsp;&nbsp;
-      <div class="range ui-range" style="width: 129px;">
-        <div class="ui-range-track" style="border-left-width: 64.5px;">
-          <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="24" aria-valuemax="32" aria-valuemin="16" role="slider"></a> -->
-        </div>
-      </div>
-      <input type="range" class="range" name="fontSize" value="24" min="16" max="32" style="width: 129px;">
-      <p>弹幕位置：
-        <input type="radio" id="rangeFull" name="range" checked="" value="0,1">
-        <label class="ui-radio" for="rangeFull"></label>
-        <label for="rangeFull">全部位置</label>
-        <input type="radio" id="rangeTop" name="range" value="0,0.3">
-        <label class="ui-radio" for="rangeTop"></label>
-        <label for="rangeTop">顶部</label>
-        <input type="radio" id="rangeBottom" name="range" value="0.7,1">
-        <label class="ui-radio" for="rangeBottom"></label>
-        <label for="rangeBottom">底部</label>
-      </p>
-      <p class="last">
-        <input class="ui-input" id="input" name="value" required="" style="width: 500;height: 42px;">
-        <input type="submit" class="ui-button ui-button-primary" value="发送弹幕" disabled="" onclick="addDanmu()"> 颜色：
-        <label for="color" class="ui-color-track">
-          <span class="ui-color-thumb" style="background-color: rgb(255, 0, 0);"></span>
-        </label>
-        <input type="color" id="color" name="color" value="#ff0000" readonly="" data-target="id_010343685829235616" aria-expanded="false">
-      </p>
-    </form>
+    </div>
   </div>
 
 
