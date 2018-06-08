@@ -1,0 +1,322 @@
+<head>
+  <title>星云弹幕视频网</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+  <link href="images/favicon.ico" rel="shortcut icon">
+
+  <link href="lib/css/bootstrap.css" rel='stylesheet' type='text/css' />
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <!-- Custom Theme files -->
+  <link href="lib/css/style.css" rel='stylesheet' type='text/css' />
+  <!-- Custom Theme files -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="keywords" content="Hotel Deluxe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  <!--webfont-->
+  <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <script src="lib/js/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="lib/js/login.js"></script>
+  <script src="lib/js/jquery.easydropdown.js"></script>
+  <!--Animation-->
+  <script src="lib/js/wow.min.js"></script>
+  <link href="lib/css/animate.css" rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="lib/css/hl.css">
+  <link rel="stylesheet" href="lib/css/Color.css">
+
+  <script>
+    new WOW().init();
+  </script>
+  <style>
+    .video-x {
+      position: relative;
+      width: 850px;
+      margin: auto;
+    }
+
+    .video-x video {
+      background-color: black;
+      outline: 1px solid #eee;
+    }
+
+    .canvas-barrage {
+      position: absolute;
+      width: 860px;
+      height: 575 px;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    input[type="range"] {
+      vertical-align: middle;
+      margin-right: 50px;
+    }
+
+    .ui-radio+label {
+      margin-left: 5px;
+      margin-right: 20px;
+    }
+
+    input[type="submit"] {
+      margin-left: 10px;
+      margin-right: 50px;
+    }
+
+    [disabled] {
+      pointer-events: none;
+      opacity: .4;
+    }
+
+    .last {
+      border-top: 1px solid #eee;
+      margin-top: 1.5em;
+      padding-top: 2em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="col-sm-12 header-left">
+      <div class="logo">
+        <a href="index.html">
+          <img src="images/logo.png" alt="" />
+        </a>
+      </div>
+      <div class="menu">
+        <a class="toggleMenu" href="#">
+          <img src="images/nav.png" alt="" />
+        </a>
+        <ul class="nav" id="nav">
+          <li class="active">
+            <a href="index.html">首页</a>
+          </li>
+          <li>
+            <a href="upload.html">上传视频</a>
+          </li>
+          <li>
+            <a href="contact.html">联系我们</a>
+          </li>
+          <li>
+            <a href="info.html">使用说明</a>
+          </li>
+          <div class="clearfix"></div>
+        </ul>
+        <script type="text/javascript" src="lib/js/responsive-nav.js"></script>
+      </div>
+      <div class="clearfix"></div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+  <br>
+  <br>
+  <div class="video-x">
+    <canvas id="canvasBarrage" class="canvas-barrage" width="860" height="575"></canvas>
+    <video id="videoBarrage" width="860" height="575" controls>
+      <source id="videoSrc" src="" type="video/mp4">
+    </video>
+    <br>
+    <br>
+    <form id="barrageForm" method="post" autocomplete="off">
+      透明度(0-100)：&nbsp;&nbsp;&nbsp;&nbsp;
+      <div class="range ui-range" style="width: 129px;">
+        <div class="ui-range-track" style="border-left-width: 129px;">
+          <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="100" aria-valuemax="100" aria-valuemin="0" role="slider"></a> -->
+        </div>
+      </div>
+      <input type="range" class="range" name="opacity" value="100" min="0" max="100" style="width: 129px;"> 文字大小(16-32)：&nbsp;&nbsp;
+      <div class="range ui-range" style="width: 129px;">
+        <div class="ui-range-track" style="border-left-width: 64.5px;">
+          <!-- <a class="ui-range-thumb" href="javascript:" aria-valuenow="24" aria-valuemax="32" aria-valuemin="16" role="slider"></a> -->
+        </div>
+      </div>
+      <input type="range" class="range" name="fontSize" value="24" min="16" max="32" style="width: 129px;">
+
+
+      <p>弹幕位置：
+        <input type="radio" id="rangeFull" name="range" checked="" value="0,1">
+        <label class="ui-radio" for="rangeFull"></label>
+        <label for="rangeFull">全部位置</label>
+        <input type="radio" id="rangeTop" name="range" value="0,0.3">
+        <label class="ui-radio" for="rangeTop"></label>
+        <label for="rangeTop">顶部</label>
+        <input type="radio" id="rangeBottom" name="range" value="0.7,1">
+        <label class="ui-radio" for="rangeBottom"></label>
+        <label for="rangeBottom">底部</label>
+        <input type="button" value="加载弹幕" onclick="loadDanmu()">
+      </p>
+      <p class="last">
+        <input class="ui-input" id="input" name="value" required="">
+        <input type="submit" class="ui-button ui-button-primary" value="发送弹幕" disabled="" onclick="addDanmu()"> 颜色：
+        <label for="color" class="ui-color-track">
+          <span class="ui-color-thumb" style="background-color: rgb(255, 0, 0);"></span>
+        </label>
+        <input type="color" id="color" name="color" value="#ff0000" readonly="" data-target="id_010343685829235616" aria-expanded="false">
+      </p>
+    </form>
+  </div>
+
+
+  <script src="lib/js/jquery-3.3.1.min.js"></script>
+  <script src="lib/js/bootstrap.min.js"></script>
+  <script src="lib/js/canvasBarrage.js"></script>
+  <script src="lib/js/nebPay.js"></script>
+  <script src="lib/js/nebulas.js"></script>
+  <script src="lib/js/ga.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script>
+
+    var url = window.location.href;
+    var hash = url.substring(url.indexOf('=') + 1, url.length);
+    // console.log(hash);
+    // https://ipfs.infura.io/ipfs/QmU1GSqu4w29Pt7EEM57Lhte8Lce6e7kuhRHo6rSNb2UaC
+    document.getElementById('videoBarrage').src = "https://ipfs.infura.io/ipfs/" + hash;
+
+    // 弹幕数据
+    var dataBarrage = [{}];
+
+    // 初始化弹幕方法
+    var eleCanvas = document.getElementById('canvasBarrage');
+    var eleVideo = document.getElementById('videoBarrage');
+    var demoBarrage = new CanvasBarrage(eleCanvas, eleVideo, {
+      data: dataBarrage
+    });
+
+    // 下面是交互处理，与弹幕方法本身无关，旨在演示如何修改全局设置，新增弹幕等
+    // 1. 全局的弹幕大小，位置和透明度处理
+    document.addEventListener("DOMContentLoaded", function () {
+      $('.range').on('change', function () {
+        // 改变弹幕的透明度和字号大小
+        demoBarrage[this.name] = this.value * 1;
+      });
+
+      $('input[name="range"]').on('click', function () {
+        // 改变弹幕在视频显示的区域范围
+        demoBarrage['range'] = this.value.split(',');
+      });
+
+      // 发送弹幕
+      var elForm = $('#barrageForm'), elInput = $('#input');
+      elForm.on('submit', function (event) {
+        eleVideo.pause();
+        event.preventDefault();
+        // 新增弹幕
+        newData = {
+          value: $('#input').val(),
+          color: $('#color').val(),
+          time: eleVideo.currentTime
+        };
+        demoBarrage.add(newData);
+
+        addDanmu(newData);
+
+        elInput.val('').trigger('input');
+      });
+      // 提交按钮
+      var elSubmit = elForm.find('input[type="submit"]');
+
+      // 输入框和禁用按钮
+      elInput.on('input', function () {
+        if (this.value.trim()) {
+          elSubmit.removeAttr('disabled');
+        } else {
+          elSubmit.attr('disabled', 'disabled');
+        }
+      });
+
+    }, false);
+
+    function addDanmu(data) {
+
+      if (data !== undefined) {
+        //console.log(data);
+
+        var NebPay = require("nebpay");
+        var nebPay = new NebPay();
+        var serialNumber
+        var to = "n1gsCGza2PHsPyUnYkHz1ye8yinVnNsjCEy";
+        var value = "0";
+        var callFunction = "AddVideoComment"
+        var hash = url.substring(url.indexOf('=') + 1, url.length);
+        //data = JSON.stringify(data);
+        //console.log(typeof (data));
+        //var callArgs = "[\"" + hash + "\",\"" + data + "\"]";
+        var callArgs = JSON.stringify([hash, data]);
+        serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
+          listener: cbPush        //设置listener, 处理交易返回信息
+        });
+
+      }
+    }
+
+    function cbPush(resp) {
+      if (JSON.stringify(resp) === "\"Error: Transaction rejected by user\"") alert("您拒绝了交易,请刷新页面");
+      var neburl = "https://mainnet.nebulas.io";
+      var txhash = resp.txhash;
+      // console.log(txhash);
+      intervalQuery = setInterval(() => {
+        //console.log('wait');
+        axios.post(neburl + "/v1/user/getTransactionReceipt", { hash: txhash })
+          .then(d => {
+            if (d.data && d.data.result.execute_result !== "") {
+              // success
+              clearInterval(intervalQuery);
+            } else if (d.data.status === 0) {
+              alert("发送失败，请刷新页面并重试");
+              clearInterval(intervalQuery);
+            }
+          });
+      });
+    }
+
+    function loadDanmu() {
+      var dappAddress = "n1gsCGza2PHsPyUnYkHz1ye8yinVnNsjCEy";
+      var nebulas = require("nebulas"),
+        Account = nebulas.Account,
+        neb = new nebulas.Neb();
+      neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+
+      var hash = url.substring(url.indexOf('=') + 1, url.length);
+      var from = Account.NewAccount().getAddressString();
+      var value = "0";
+      var nonce = "0"
+      var gas_price = "1000000"
+      var gas_limit = "2000000"
+      var callFunction = "VideoCommetQuery";
+      var callArgs = "[\"" + hash + "\"]";
+      var contract = {
+        "function": callFunction,
+        "args": callArgs
+      }
+      neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+        cbLoadComment(resp)
+      }).catch(function (err) {
+        console.log("error:" + err.message)
+      })
+    }
+
+    function cbLoadComment(resp) {
+      var result = resp.result    ////resp is an object, resp.result is a JSON string
+      console.log("return of rpc call: " + JSON.stringify(result));
+      if (result !== "null" || result !== null) {
+        var tmp = JSON.parse(result);
+        demoBarrage = new CanvasBarrage(eleCanvas, eleVideo, {
+          data: dataBarrage
+        });
+        for (var i = 0; i < tmp.length; i++) {
+          // console.log(tmp[i].comment);
+          demoBarrage.add(tmp[i].comment);
+        }
+      }
+    }
+
+  </script>
+
+  <script src="lib/js/Color.js"></script>
+  <script>
+    $('.range').range();
+    $('#color').color();
+  </script>
+</body>

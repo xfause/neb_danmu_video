@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+
+<head>
+    <title>星云弹幕视频网</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+    <link href="images/favicon.ico" rel="shortcut icon">
+
+    <link href="lib/css/bootstrap.css" rel='stylesheet' type='text/css' />
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Custom Theme files -->
+    <link href="lib/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- Custom Theme files -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Hotel Deluxe Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--webfont-->
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <script src="lib/js/jquery.easydropdown.js"></script>
+    <!--Animation-->
+    <script src="lib/js/wow.min.js"></script>
+    <link href="lib/css/animate.css" rel='stylesheet' type='text/css' />
+    <script>
+        new WOW().init();
+    </script>
+    <style>
+        table {
+            border: 1px solid #ccc;
+            width: 80%;
+            margin: 0;
+            padding: 0;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        table tr {
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+
+        table th,
+        table td {
+            padding: 10px;
+            text-align: center;
+        }
+
+        table th {
+            text-transform: uppercase;
+            font-size: 14px;
+            letter-spacing: 1px;
+        }
+
+        /* <= 568px */
+
+        @media screen and (max-width: 35.5em) {
+            table {
+                border: 0;
+            }
+            table thead {
+                display: none;
+            }
+            table tr {
+                margin-bottom: 10px;
+                display: block;
+                border-bottom: 2px solid #ddd;
+            }
+            table td {
+                display: block;
+                text-align: right;
+                font-size: 13px;
+                border-bottom: 1px dotted #ccc;
+            }
+            table td:last-child {
+                border-bottom: 0;
+            }
+            table td:before {
+                content: attr(data-label);
+                float: left;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+
+        a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-decoration: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <div class="col-sm-12 header-left">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="" />
+                </a>
+            </div>
+            <div class="menu">
+                <a class="toggleMenu" href="#">
+                    <img src="images/nav.png" alt="" />
+                </a>
+                <ul class="nav" id="nav">
+                    <li class="active">
+                        <a href="index.html">首页</a>
+                    </li>
+                    <li>
+                        <a href="upload.html">上传视频</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="info.html">使用说明</a>
+                    </li>
+                    <div class="clearfix"></div>
+                </ul>
+                <script type="text/javascript" src="lib/js/responsive-nav.js"></script>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="banner">
+        <div class="container_wrap">
+            <h1>What are you looking for?</h1>
+            <div class="dropdown-buttons">
+                <div class="dropdown-button">
+                    <select class="dropdown" tabindex="2" data-settings='{"wrapperClass":"flat"}' id="type">
+                        <option value="0">视频标题</option>
+                        <option value="1">视频哈希</option>
+                    </select>
+                </div>
+            </div>
+            <form>
+                <input type="text" id="wts" placeholder="您想搜索的值">
+                <div class="contact_btn">
+                    <label class="btn1 btn-2 btn-2g">
+                        <input type="button" id="search" value="寻找视频" onclick="searchVideo()">
+                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label class="btn1 btn-2 btn-2g">
+                        <input type="button" id="visit" value="随便看看" onclick="visitList()">
+                    </label>
+                </div>
+            </form>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <div class="content_middle">
+        <div class="content_middle_box">
+            <center>
+                <table id="result">
+                    <thead>
+                        <tr>
+                            <th>标题</th>
+                            <th>视频Hash</th>
+                            <th>观看地址</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </div>
+
+    <script src="lib/js/jquery-3.3.1.min.js"></script>
+    <script src="lib/js/bootstrap.min.js"></script>
+    <script src="lib/js/nebPay.js"></script>
+    <script src="lib/js/nebulas.js"></script>
+
+    <script>
+        var dappAddress = "n1gsCGza2PHsPyUnYkHz1ye8yinVnNsjCEy";
+
+        function searchVideoName(name) {
+
+            var nebulas = require("nebulas"),
+                Account = nebulas.Account,
+                neb = new nebulas.Neb();
+            neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+
+            var from = Account.NewAccount().getAddressString();
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "VideoNameQuery";
+            var callArgs = "[\"" + name + "\"]";
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+                cbSearchName(resp)
+            }).catch(function (err) {
+                console.log("error:" + err.message)
+            })
+        }
+
+        function cbSearchName(resp) {
+
+            var result = resp.result    ////resp is an object, resp.result is a JSON string
+            console.log("return of rpc call: " + JSON.stringify(result));
+            if (result === "null" || result === null) {
+                document.getElementById("result").innerHTML = "<thead><tr><th>标题</th><th>视频Hash</th><th>观看地址</th></tr></thead><tr><th colspan=\"3\">未找到视频</th></tr>";
+            } else {
+                // console.log(JSON.stringify(result));
+                document.getElementById("result").innerHTML = "";
+                var obj = document.getElementById('result').innerHTML;
+                obj += '<thead><tr><th>标题</th><th>视频Hash</th><th>观看地址</th></tr></thead>';
+                var mpp = JSON.stringify(result);
+                var tmpp = JSON.parse(mpp);
+                var end = JSON.parse(tmpp)
+                for (var i = end.length - 1; i >= 0; i--) {
+                    obj += "<tbody><tr><td>" + end[i].name + "</td>";
+                    obj += "<td>" + end[i].hash + "</td>";
+                    obj += "<td><a href=view.html?hash=" + end[i].hash + " " + "target=\"_Blank\">观看地址</a></td></tr>";
+                }
+                obj += "</tbody>";
+                document.getElementById('result').innerHTML = obj;
+            }
+        }
+        function searchVideo() {
+
+            write = document.getElementById('wts').value;
+            if (write === '') alert('请输入您想搜索的值');
+            else {
+                var myselect = document.getElementById("type");
+                var index = myselect.selectedIndex;
+                if (myselect.options[index].value === '0') {
+                    var name = document.getElementById('wts').value;
+                    searchVideoName(name);
+                } else if (myselect.options[index].value === '1') {
+                    var hash = document.getElementById('wts').value;
+                    //var url = "https://ipfs.infura.io/ipfs/" + hash + "?dl=1";
+                    // 传参到view.html
+                    // 
+                    var index = "lemon";
+                    var viewUrl = "view.html?hash=" + hash;
+                    window.open(viewUrl);
+                }
+            }
+        }
+
+        function visitList() {
+
+            var nebulas = require("nebulas"),
+                Account = nebulas.Account,
+                neb = new nebulas.Neb();
+            neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"));
+
+            var from = Account.NewAccount().getAddressString();
+            var value = "0";
+            var nonce = "0"
+            var gas_price = "1000000"
+            var gas_limit = "2000000"
+            var callFunction = "VideoListQuery";
+            var callArgs = "[]"; //in the form of ["args"]
+            var contract = {
+                "function": callFunction,
+                "args": callArgs
+            }
+            neb.api.call(from, dappAddress, value, nonce, gas_price, gas_limit, contract).then(function (resp) {
+                cbSearchList(resp)
+            }).catch(function (err) {
+                //cbSearch(err)
+                console.log("error:" + err.message)
+            })
+        }
+        function cbSearchList(resp) {
+
+            var result = resp.result    ////resp is an object, resp.result is a JSON string
+            console.log("return of rpc call: " + JSON.stringify(result));
+            if (result === "null" || result === null) {
+                document.getElementById("result").innerHTML = "<thead><tr><th>标题</th><th>视频Hash</th><th>观看地址</th></tr></thead><tr><th colspan=\"3\">未找到视频</th></tr>";
+            } else {
+                // console.log(JSON.stringify(result));
+                document.getElementById("result").innerHTML = "";
+                var obj = document.getElementById('result').innerHTML;
+                obj += '<thead><tr><th>标题</th><th>视频Hash</th><th>观看地址</th></tr></thead>';
+                var mpp = JSON.stringify(result);
+                var tmpp = JSON.parse(mpp);
+                var end = JSON.parse(tmpp)
+                for (var i = end.length - 1; i >= 0; i--) {
+                    obj += "<tbody><tr><td>" + end[i].name + "</td>";
+                    obj += "<td>" + end[i].hash + "</td>";
+                    obj += "<td><a href=view.html?hash=" + end[i].hash + " " + "target=\"_Blank\">观看地址</a></td></tr>";
+                }
+                obj += "</tbody>";
+                document.getElementById('result').innerHTML = obj;
+            }
+        }
+    </script>
+
+</body>
