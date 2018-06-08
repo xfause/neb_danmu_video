@@ -74,6 +74,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       margin-top: 1.5em;
       padding-top: 2em;
     }
+
+    .myButton {
+      background-color: #3d94f6;
+      -moz-border-radius: 28px;
+      -webkit-border-radius: 28px;
+      border-radius: 28px;
+      border: 1px solid #337fed;
+      display: inline-block;
+      cursor: pointer;
+      color: #ffffff;
+      font-family: Arial;
+      font-size: 17px;
+      padding: 16px 31px;
+      text-decoration: none;
+      text-shadow: 0px 1px 0px #1570cd;
+    }
+
+    .myButton:hover {
+      background-color: #1e62d0;
+    }
+
+    .myButton:active {
+      position: relative;
+      top: 1px;
+    }
+    a:link {
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            text-decoration: none;
+        }
   </style>
 </head>
 
@@ -111,7 +148,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="clearfix"></div>
   </div>
   <br>
-  <br>
   <div class="video-x">
     <canvas id="canvasBarrage" class="canvas-barrage" width="860" height="575"></canvas>
     <video id="videoBarrage" width="860" height="575" controls>
@@ -120,6 +156,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <br>
     <br>
     <form id="barrageForm" method="post" autocomplete="off">
+      <span></span>
+        <a href="javascript:void(0)" class="myButton" onclick="loadDanmu()" style="display:block;float: right;margin-top: 0px">请先点击 [加载弹幕] ，等待几秒钟后再播放视频。</a>
+      
       透明度(0-100)：&nbsp;&nbsp;&nbsp;&nbsp;
       <div class="range ui-range" style="width: 129px;">
         <div class="ui-range-track" style="border-left-width: 129px;">
@@ -133,8 +172,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         </div>
       </div>
       <input type="range" class="range" name="fontSize" value="24" min="16" max="32" style="width: 129px;">
-
-
       <p>弹幕位置：
         <input type="radio" id="rangeFull" name="range" checked="" value="0,1">
         <label class="ui-radio" for="rangeFull"></label>
@@ -145,10 +182,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <input type="radio" id="rangeBottom" name="range" value="0.7,1">
         <label class="ui-radio" for="rangeBottom"></label>
         <label for="rangeBottom">底部</label>
-        <input type="button" value="加载弹幕" onclick="loadDanmu()">
       </p>
       <p class="last">
-        <input class="ui-input" id="input" name="value" required="">
+        <input class="ui-input" id="input" name="value" required="" style="width: 500;height: 42px;">
         <input type="submit" class="ui-button ui-button-primary" value="发送弹幕" disabled="" onclick="addDanmu()"> 颜色：
         <label for="color" class="ui-color-track">
           <span class="ui-color-thumb" style="background-color: rgb(255, 0, 0);"></span>
