@@ -152,9 +152,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <div class="contact_btn">
                     <label class="btn1 btn-2 btn-2g">
                         <input type="button" id="search" value="寻找视频" onclick="searchVideo()">
-                    </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <label class="btn1 btn-2 btn-2g">
-                        <input type="button" id="visit" value="随便看看" onclick="visitList()">
                     </label>
                 </div>
             </form>
@@ -174,6 +171,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <th colspan="3">正在加载视频列表...<br>若加载时间过长，请刷新页面。</th>
+                        </tr>
                     </tbody>
                 </table>
             </center>
@@ -186,6 +186,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <script src="lib/js/nebulas.js"></script>
 
     <script>
+        window.onload = function () {
+            visitList()
+        }
+
         var dappAddress = "n1gsCGza2PHsPyUnYkHz1ye8yinVnNsjCEy";
 
         function searchVideoName(name) {
