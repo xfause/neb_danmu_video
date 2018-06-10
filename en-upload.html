@@ -107,7 +107,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header">
         <div class="col-sm-12 header-left">
             <div class="logo">
-                <a href="index.html">
+                <a href="en-index.html">
                     <img src="images/logo.png" alt="" />
                 </a>
             </div>
@@ -116,20 +116,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <img src="images/nav.png" alt="" />
                 </a>
                 <ul class="nav" id="nav">
+                    <li >
+                        <a href="en-index.html">Home</a>
+                    </li>
                     <li>
-                        <a href="index.html">首页</a>
+                        <a href="en-upload.html">Upload Video</a>
                     </li>
                     <li class="active">
-                        <a href="upload.html">上传视频</a>
+                        <a href="en-contact.html">Contact Us</a>
                     </li>
                     <li>
-                        <a href="contact.html">联系我们</a>
+                        <a href="en-info.html">Use Direct</a>
                     </li>
                     <li>
-                        <a href="info.html">使用说明</a>
-                    </li>
-                    <li>
-                        <a href="en-upload.html">ENG</a>
+                        <a href="upload.html">中</a>
                     </li>
                     <div class="clearfix"></div>
                 </ul>
@@ -144,24 +144,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="content_middle_box">
             <center>
                 <form id="uploadForm" class="col s8" style="padding-top: 5%; margin: auto;" enctype="multipart/form-data">
-                    <h3 style="text-align: center;">选择视频文件</h3>
-                    <h6>上传时间较长，请耐心等待，上传成功后会跳出钱包支付窗口</h6>
-                    <h6>仅支持MP4文件，请勿上传体积较大的视频，40MB的视频文件上传时间约为五分钟。</h6>
-                    <h6><a href="static/测试用短视频.mp4" download="测试用短视频.mp4">请点击下载该短视频测试上传功能</a></h6>
+                    <h3 style="text-align: center;">Choose Video File</h3>
+                    <h6>Upload File take very long time,Be patient,Upload Success will call a Pay windows</h6>
+                    <h6>Only MP4 File,Don't upload Big File. 40MB File cost 5 minutes.</h6>
+                    <h6>
+                        <a href="static/测试用短视频.mp4" download="testshortvideo.mp4">Press Here to download test upload small video.</a>
+                    </h6>
                     <br>
                     <div class="file-field input-field" style="width: 50%">
                         <div class="btn">
                             <span>
-                                选择文件</span>
+                                Choose File</span>
                             <input type="file" id="fileInput">
                         </div>
                         <div class="file-path-wrapper">
                             <input class="file-path validate " type="text" id="uploaded">
                         </div>
                     </div>
-                    <input type="text" name="" id="fileName" style="width:50%" placeholder="请输入视频标题" required/>
+                    <input type="text" name="" id="fileName" style="width:50%" placeholder="Please input video title" required/>
                     <div class="wrapper" style="width: 50%">
-                        <button class="waves-effect waves-light btn-large" id="upload" onclick="up()">上传
+                        <button class="waves-effect waves-light btn-large" id="upload" onclick="up()">Upload
                         </button>
                     </div>
                     <br>
@@ -195,17 +197,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
             var fileName = document.getElementById('fileInput').files[0].name;
             var fileType = (fileName.substring(fileName.lastIndexOf(".") + 1, fileName.length)).toLowerCase();
             if (fileType !== 'mp4') {
-                alert('请上传MP4视频文件');
+                alert('Please upload MP4 File');
                 location.reload();
             }
             if (document.getElementById("fileName").value === "") {
-                alert('请填写视频标题');
+                alert('Please input video title');
                 location.reload();
             }
 
             form.addEventListener('submit', (event) => {
                 event.preventDefault()
-                hashField.value = "正在上传..."
+                hashField.value = "Uploading..."
 
                 const file = document.getElementById('fileInput').files[0]
                 const FD = new FormData()
@@ -219,7 +221,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         deal(data);
                         //window.open("https://ipfs.infura.io/ipfs/" + data.Hash + "?dl=1");
                     })
-                    .catch(err => hashField.value = "网络异常，请稍后再试。")
+                    .catch(err => hashField.value = "NetWork Error，wait and try again。")
             });
         }
 
@@ -241,7 +243,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         }
 
         function cbPush(resp) {
-            if (JSON.stringify(resp) === "\"Error: Transaction rejected by user\"") alert("您拒绝了交易,请刷新页面");
+            if (JSON.stringify(resp) === "\"Error: Transaction rejected by user\"") alert("You refuse pay,Please refresh.");
             var neburl = "https://mainnet.nebulas.io";
             var txhash = resp.txhash;
             // console.log(txhash);
@@ -253,7 +255,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                             // success
                             clearInterval(intervalQuery);
                         } else if (d.data.status === 0) {
-                            alert("上传失败，请刷新页面并重试");
+                            alert("Upload Fail，refresh and try again.");
                             clearInterval(intervalQuery);
                         }
                     });
