@@ -235,6 +235,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 var tmpp = JSON.parse(mpp);
                 var end = JSON.parse(tmpp)
                 for (var i = end.length - 1; i >= 0; i--) {
+                    if (end[i].name.length>20){
+                        end[i].name = end[i].name.substring(0,18) + '...';
+                    }else {
+                        end[i].name = end[i].name;
+                    }
                     obj += "<tbody><tr><td>" + end[i].name + "</td>";
                     obj += "<td>" + end[i].hash + "</td>";
                     obj += "<td><a href=view.html?hash=" + end[i].hash + " " + "target=\"_Blank\">观看地址</a></td></tr>";
@@ -305,6 +310,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 var tmpp = JSON.parse(mpp);
                 var end = JSON.parse(tmpp)
                 for (var i = end.length - 1; i >= 0; i--) {
+                    if (end[i].name.length>20){
+                        end[i].name = end[i].name.substring(0,18) + '...';
+                    }else {
+                        end[i].name = end[i].name;
+                    }
                     obj += "<tbody><tr><td>" + end[i].name + "</td>";
                     obj += "<td>" + end[i].hash + "</td>";
                     obj += "<td><a href=view.html?hash=" + end[i].hash + " " + "target=\"_Blank\">观看地址</a></td></tr>";
